@@ -1,0 +1,13 @@
+.list {
+  list-style: none;
+  margin-top: 20px 0;
+  padding: 0;
+}
+.list__item {
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: grey;
+}
+.list__item-address {
+  font-weight: bold;
+}
