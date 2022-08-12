@@ -4,7 +4,7 @@ import useStream from '../useStream';
 import './List.css';
 
 function List() {
-  const list = useStream(facade.getItem());
+  const list = useStream(facade.getItem(), []);
 
   if (list.length > 0 ) {
     return (

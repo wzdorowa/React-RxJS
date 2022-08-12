@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 
-function useStream(stream$) {
-  const [data, setData] = useState([]);
+function useStream(stream$, defaultValue) {
+  const [data, setData] = useState(defaultValue);
 
   useEffect(() => {
-    stream$.subscribe(data => {
+    const subscription = stream$.subscribe(data => {
       setData(data);
     });
     return () => {
-      console.log('list', data);
+      subscription.unsubscribe();
     }
-  }, []);
+  }, [stream$]);
 
   return data;
 }
