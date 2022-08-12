@@ -1,20 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import facade from "../Facade";
+import useStream from '../useStream';
 import './List.css';
 
 function List() {
-  const [list, setList] = useState([]);
-
-  useEffect(() => {
-    const stream$ = facade.getItem();
-    stream$.subscribe(data => {
-      setList(data);
-    });
-    return () => {
-      console.log('list', list);
-    }
-  }, []);
-
+  const list = useStream(facade.getItem());
 
   if (list.length > 0 ) {
     return (
