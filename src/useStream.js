@@ -5,7 +5,9 @@ function useStream(stream$, defaultValue) {
 
   useEffect(() => {
     const subscription = stream$.subscribe(data => {
-      setData(data);
+      setTimeout(() => {
+        setData(data);
+      }, 3000);
     });
     return () => {
       subscription.unsubscribe();

@@ -1,12 +1,15 @@
 import React from 'react';
 import facade from "../Facade";
 import useStream from '../useStream';
+import Loader from '../Loader/Loader';
 import './List.css';
 
 function List() {
   const list = useStream(facade.getItem(), []);
 
-  if (list.length > 0 ) {
+  if (list.length === 0) {
+    return (<Loader/>);
+  } else {
     return (
       <ul className="list">
         {list.map((item) =>
