@@ -1,4 +1,6 @@
 import { ReplaySubject } from "rxjs";
+import {map} from 'rxjs/operators';
+
 
 class Facade {
   constructor() {
@@ -18,6 +20,7 @@ class Facade {
 
   getItem() {
     return this.stream$;
+    // return this.stream$.pipe(map(() => { throw new Error('qweqwe asdasd qweqwe')}));
   }
 
   setItem(addresses) {
