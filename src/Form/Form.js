@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TextField, Button } from "@mui/material";
-import facade from "../Facade";
+import balanceWatcher from "../BalanceWatcher";
 import './Form.css';
 
 function Form() {
@@ -16,7 +16,7 @@ function Form() {
   }
 
   const onButtonClick = () => {
-    facade.setItem([userAddress, ERC20Address]);
+    balanceWatcher.addWatchItem([userAddress, ERC20Address]);
     setUserAddress('');
     setERC20Address('');
   }

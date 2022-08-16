@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 
-function useStream(stream$, defaultValue) {
-  const [data, setData] = useState(defaultValue);
+function useStream(stream$) {
+  const [watchList, setWatchList] = useState();
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const subscription = stream$.subscribe({
-      next: (data) => {
+      next: (list) => {
         setTimeout(() => {
-          setData(data);
+          setWatchList(list);
         }, 3000);
       },
       error: (error) => {
@@ -20,7 +20,7 @@ function useStream(stream$, defaultValue) {
     }
   }, [stream$]);
 
-  return [data, error];
+  return [watchList, error];
 }
 
 export default useStream;

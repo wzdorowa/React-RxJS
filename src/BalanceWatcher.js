@@ -1,15 +1,13 @@
 import { ReplaySubject } from "rxjs";
-import {map} from 'rxjs/operators';
 
-
-class Facade {
+class BalanceWatcher {
   constructor() {
-    this.stream$ = new ReplaySubject(1);
-    this.state = this.initialize();
-    this.stream$.next(this.state);
+    this.watchList$ = new ReplaySubject(1);
+    this.state = this.initializeState();
+    this.watchList$.next(this.state);
   }
 
-  initialize() {
+  initializeState() {
     let state = localStorage.getItem('state');
     if (state === null) {
       localStorage.setItem('state', JSON.stringify([]));
@@ -18,17 +16,17 @@ class Facade {
     return JSON.parse(state);
   }
 
-  getItem() {
-    return this.stream$;
+  getWatchList() {
+    return this.watchList$;
     // return this.stream$.pipe(map(() => { throw new Error('qweqwe asdasd qweqwe')}));
   }
 
-  setItem(addresses) {
+  addWatchItem(addresses) {
     localStorage.setItem('state', JSON.stringify([...this.state, addresses]));
     this.state = JSON.parse(localStorage.getItem('state'));
-    this.stream$.next(this.state);
+    this.watchList$.next(this.state);
   }
 };
 
-const facade = new Facade();
-export default facade;
+const balanceWatcher = new BalanceWatcher();
+export default balanceWatcher;
