@@ -1,5 +1,5 @@
 import Form from './Form/Form';
-import WatchList from './List/List';
+import WatchList from './WatchList/WatchList';
 import './App.css';
 
 function App() {

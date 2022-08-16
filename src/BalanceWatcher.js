@@ -1,5 +1,5 @@
 import { ReplaySubject } from "rxjs";
-import { of } from 'rxjs';
+import { of, map } from 'rxjs';
 
 class BalanceWatcher {
   constructor() {
@@ -19,7 +19,7 @@ class BalanceWatcher {
 
   getWatchList() {
     return this.watchList$;
-    // return this.stream$.pipe(map(() => { throw new Error('qweqwe asdasd qweqwe')}));
+    // return  this.watchList$.pipe(map(() => { throw new Error('qweqwe asdasd qweqwe')}));
   }
 
   addWatchItem(addresses) {
@@ -30,6 +30,7 @@ class BalanceWatcher {
 
   getBalance(watchItem) {
     return of(1000);
+    // return  this.watchList$.pipe(map(() => { throw new Error('qweqwe asdasd qweqwe')}));
   }
 };
 
