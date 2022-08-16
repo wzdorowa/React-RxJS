@@ -3,12 +3,14 @@ import { useState, useEffect } from 'react';
 function useStream(stream$) {
   const [data, setData] = useState();
   const [error, setError] = useState(null);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     const subscription = stream$.subscribe({
       next: (data) => {
         setTimeout(() => {
           setData(data);
+          setLoading(false);
         }, 3000);
       },
       error: (error) => {
@@ -20,7 +22,7 @@ function useStream(stream$) {
     }
   }, [stream$]);
 
-  return [data, error];
+  return [data, error, isLoading];
 }
 
 export default useStream;
