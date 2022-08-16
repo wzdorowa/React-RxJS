@@ -4,8 +4,13 @@
   padding: 0;
 }
 .list__item {
-  padding: 10px;
-  margin-bottom: 5px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 7vh;
+  padding: 0 20px;
+  margin-bottom: 10px;
   border: 1px solid lightgray;
   box-shadow: 3px 3px 5px lightgray;
 }

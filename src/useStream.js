@@ -11,7 +11,7 @@ function useStream(stream$) {
         setTimeout(() => {
           setData(data);
           setLoading(false);
-        }, 3000);
+        }, 2000);
       },
       error: (error) => {
         setError(error);
