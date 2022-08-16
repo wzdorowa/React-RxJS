@@ -6,7 +6,8 @@
 .list__item {
   padding: 10px;
   margin-bottom: 5px;
-  background-color: grey;
+  border: 1px solid lightgray;
+  box-shadow: 3px 3px 5px lightgray;
 }
 .list__item-address {
   font-weight: bold;
