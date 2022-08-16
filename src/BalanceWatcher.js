@@ -1,4 +1,5 @@
 import { ReplaySubject } from "rxjs";
+import { of } from 'rxjs';
 
 class BalanceWatcher {
   constructor() {
@@ -25,6 +26,10 @@ class BalanceWatcher {
     localStorage.setItem('state', JSON.stringify([...this.state, addresses]));
     this.state = JSON.parse(localStorage.getItem('state'));
     this.watchList$.next(this.state);
+  }
+
+  getBalance(watchItem) {
+    return of(1000);
   }
 };
 

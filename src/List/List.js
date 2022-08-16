@@ -10,8 +10,11 @@ function WatchList() {
   if (error !== null) {
     return (<h1>Ошибка поймана: {error.message}</h1>)
   } else {
-    if (watchList.length === 0) {
+    if (watchList === undefined) {
       return (<Loader/>);
+    }
+    if (watchList.length === 0) {
+      <h1>Список пуст!</h1>
     } else {
       return (
         <ul className="list">
