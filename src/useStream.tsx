@@ -1,25 +1,26 @@
 import { useState, useEffect } from 'react';
+import { ReplaySubject } from 'rxjs';
 
-function useStream(stream$) {
-  const [data, setData] = useState();
+function useStream(stream$: ReplaySubject<unknown>) {
+  const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     const subscription = stream$.subscribe({
-      next: (data) => {
+      next: (dataStream) => {
         setTimeout(() => {
-          setData(data);
+          setData(dataStream);
           setLoading(false);
         }, 2000);
       },
-      error: (error) => {
-        setError(error);
-      }
+      error: (errorStream) => {
+        setError(errorStream);
+      },
     });
     return () => {
       subscription.unsubscribe();
-    }
+    };
   }, [stream$]);
 
   return [data, error, isLoading];

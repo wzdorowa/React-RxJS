@@ -1,25 +1,25 @@
-import { useState } from "react";
-import { TextField, Button } from "@mui/material";
-import balanceWatcher from "../BalanceWatcher";
+import { useState } from 'react';
+import { TextField, Button } from '@mui/material';
+import balanceWatcher from '../BalanceWatcher';
 import './Form.css';
 
 function Form() {
   const [userAddress, setUserAddress] = useState('');
   const [ERC20Address, setERC20Address] = useState('');
 
-  const handleChangeUserAddress = (event) => {
+  const handleChangeUserAddress = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserAddress(event.target.value);
-  }
+  };
 
-  const handleChangeERC20Address = (event) => {
+  const handleChangeERC20Address = (event: React.ChangeEvent<HTMLInputElement>) => {
     setERC20Address(event.target.value);
-  }
+  };
 
   const onButtonClick = () => {
     balanceWatcher.addWatchItem([userAddress, ERC20Address]);
     setUserAddress('');
     setERC20Address('');
-  }
+  };
 
   return (
     <div className="form">
