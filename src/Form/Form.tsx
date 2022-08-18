@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TextField, Button } from '@mui/material';
-import balanceWatcher from '../BalanceWatcher';
+import balanceWatcher from '../api/BalanceWatcher';
 import './Form.css';
 
 function Form() {

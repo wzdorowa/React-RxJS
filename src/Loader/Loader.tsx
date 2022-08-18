@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
-import { ReplaySubject } from 'rxjs';
-import useStream from '../useStream';
+import { Observable, ReplaySubject } from 'rxjs';
+import useStream from '../api/useStream';
 import './Loader.css';
 
 type LoaderProps = {
-  stream$: ReplaySubject<unknown>,
+  stream$: ReplaySubject<unknown> | Observable<number>,
   progressLoader: JSX.Element,
-  AlertError: JSX.Element,
-  children: (data: boolean | null | undefined) => boolean | JSX.Element | null | undefined,
+  AlertError: ({ error }: { error: string; }) => JSX.Element,
+  children: (data) => JSX.Element,
 };
 
 function Loader(props: LoaderProps) {

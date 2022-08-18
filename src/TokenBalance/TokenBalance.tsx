@@ -1,7 +1,7 @@
 import { CircularProgress } from '@mui/material';
 import Loader from '../Loader/Loader';
 import AlertErrorMini from '../AlertErrorMini/AlertErrorMini';
-import balanceWatcher from '../BalanceWatcher';
+import balanceWatcher from '../api/BalanceWatcher';
 import './TokenBalance.css';
 
 function TokenBalance({ watchItem }: { watchItem: string[] }) {

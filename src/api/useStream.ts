@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { ReplaySubject } from 'rxjs';
+import { Observable } from 'rxjs';
 
-function useStream(stream$: ReplaySubject<unknown>) {
-  const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
+function useStream<Type>(stream$: Observable<Type>) {
+  const [data, setData] = useState<Type>();
+  const [error, setError] = useState<unknown>();
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -23,7 +23,8 @@ function useStream(stream$: ReplaySubject<unknown>) {
     };
   }, [stream$]);
 
-  return [data, error, isLoading];
+  const result: [Type | undefined, unknown, boolean] = [data, error, isLoading];
+  return result;
 }
 
 export default useStream;
